@@ -9,24 +9,24 @@ using namespace std;
 void User::AddUser()
 {
     UserNode* temp = Head;
-    while (temp->next != NULL)   //ÕÒµ½Á´±íÄ©Î²
+    while (temp->next != NULL)   //æ‰¾åˆ°é“¾è¡¨æœ«å°¾
     {
         temp = temp->next;
     }
     temp ->next = new UserNode; 
     temp = temp->next;
-    temp->Set_info();//Ìí¼Ó³ÉÔ±ÒªÂ¼ÈëĞÅÏ¢
+    temp->Set_info();//æ·»åŠ æˆå‘˜è¦å½•å…¥ä¿¡æ¯
 }
 
 UserNode* User::SearchUser(IN_PARAM string first)
 {
     UserNode* temp = Head;
     if (temp->next == NULL) {
-    cout << "²éÎŞ´ËÈË" << endl;
+    cout << "æŸ¥æ— æ­¤äºº" << endl;
     system("pause");
     return NULL; 
     }
-    temp = temp->next;//´ÓµÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    temp = temp->next;//ä»ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while(temp != NULL)
     {
         if(first == temp->str_name)
@@ -39,19 +39,19 @@ UserNode* User::SearchUser(IN_PARAM string first)
         }
         temp = temp->next;
     }
-   cout << "²éÎŞ´ËÈË" << endl;
-   //---------------------ÒÔÏÂÊÇÄ£ºı²éÕÒ----------------------------------------
+   cout << "æŸ¥æ— æ­¤äºº" << endl;
+   //---------------------ä»¥ä¸‹æ˜¯æ¨¡ç³ŠæŸ¥æ‰¾----------------------------------------
    cout << "***************************************************" << endl;
-   cout << "Äş¿ÉÄÜÏëÕÒ..." << endl;
-   cout << "Ãû×Ö            id               µç»°    " << endl;
-   temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+   cout << "å®å¯èƒ½æƒ³æ‰¾..." << endl;
+   cout << "åå­—            id               ç”µè¯    " << endl;
+   temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
    while (temp != NULL)
    {
        string::size_type idx;
        string::size_type idx2;
        idx = temp->str_name.find(first);
        idx2 = temp->str_phone_num.find(first);
-       if (idx != string::npos||idx2!=string::npos)//´æÔÚ×Ó´®¡£
+       if (idx != string::npos||idx2!=string::npos)//å­˜åœ¨å­ä¸²ã€‚
        {
            if (false == temp->b_in_blacklist)
                cout << left << setw(16) << temp->str_name << setw(17) <<
@@ -64,11 +64,11 @@ UserNode* User::SearchUser(IN_PARAM string first)
 }
 
 
-void User::DeleteUserNode(IN_PARAM string first) //É¾³ıÍ¨Ñ¶Â¼½Úµã
+void User::DeleteUserNode(IN_PARAM string first) //åˆ é™¤é€šè®¯å½•èŠ‚ç‚¹
 {
     if(NULL == (Head->next))
     {
-        cout << "Í¨Ñ¶Â¼Îª¿Õ" << endl;
+        cout << "é€šè®¯å½•ä¸ºç©º" << endl;
         system("pause");
         return;
     }
@@ -84,40 +84,40 @@ void User::DeleteUserNode(IN_PARAM string first) //É¾³ıÍ¨Ñ¶Â¼½Úµã
             }
             ptr->next = temp->next;
             delete temp;
-            cout << "É¾³ı³É¹¦" << endl;
+            cout << "åˆ é™¤æˆåŠŸ" << endl;
             system("pause");
 }
 
 void User::Main_view()
 {
-    cout << " | ***********»¶Ó­½øÈëÍ¨Ñ¶Â¼¹ÜÀíÏµÍ³*************|" << endl;
+    cout << " | ***********æ¬¢è¿è¿›å…¥é€šè®¯å½•ç®¡ç†ç³»ç»Ÿ*************|" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | ************----¸öÈËÄ£Ê½----******************|" << endl;
+    cout << " | ************----ä¸ªäººæ¨¡å¼----******************|" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | *********  (¼üÈë¶ÔÓ¦±àºÅ½øÈëÏàÓ¦Ä£¿é)  *******|" << endl;
-    cout << " | 1¡ª¡ªÂ¼ÈëĞÅÏ¢            2¡ª¡ªÏÔÊ¾ĞÅÏ¢        |" << endl;
+    cout << " | *********  (é”®å…¥å¯¹åº”ç¼–å·è¿›å…¥ç›¸åº”æ¨¡å—)  *******|" << endl;
+    cout << " | 1â€”â€”å½•å…¥ä¿¡æ¯            2â€”â€”æ˜¾ç¤ºä¿¡æ¯        |" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | 3¡ª¡ª²éÕÒÍ¨Ñ¶Â¼ĞÅÏ¢      4¡ª¡ªÉ¾³ıĞÅÏ¢        |" << endl;
+    cout << " | 3â€”â€”æŸ¥æ‰¾é€šè®¯å½•ä¿¡æ¯      4â€”â€”åˆ é™¤ä¿¡æ¯        |" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | 5¡ª¡ªĞŞ¸ÄĞÅÏ¢            6¡ª¡ª±£´æĞÅÏ¢        |" << endl;
+    cout << " | 5â€”â€”ä¿®æ”¹ä¿¡æ¯            6â€”â€”ä¿å­˜ä¿¡æ¯        |" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | 7¡ª¡ª¶ÁÈ¡ĞÅÏ¢          8/9¡ª¡ªÀ­ºÚ/·´À­ºÚ     |" << endl;
+    cout << " | 7â€”â€”è¯»å–ä¿¡æ¯          8/9â€”â€”æ‹‰é»‘/åæ‹‰é»‘     |" << endl;
     cout << " | ----------------------------------------------|" << endl;
-    cout << " | 10¡ª¡ªĞŞ¸ÄÃÜÂë                                |" << endl;
-    cout << " | -----------------°´0ÍË³ö----------------------|" << endl;
+    cout << " | 10â€”â€”ä¿®æ”¹å¯†ç                                 |" << endl;
+    cout << " | -----------------æŒ‰0é€€å‡º----------------------|" << endl;
 }
 
 void User::Display()
 {
 
-    int n, key = 0, lab = 0;	//key¿ØÖÆÍË³ö£¬lab¿ØÖÆÇåÆÁ
+    int n, key = 0, lab = 0;	//keyæ§åˆ¶é€€å‡ºï¼Œlabæ§åˆ¶æ¸…å±
     for (;;) {
         if (lab == 0) {
-            system("cls");		    //ÇåÆÁ
-            Main_view();		//ÖØĞÂ´òÓ¡²Ëµ¥
+            system("cls");		    //æ¸…å±
+            Main_view();		//é‡æ–°æ‰“å°èœå•
         }
         cin >> n;
-        getchar(); //³Ôµô»Ø³µ
+        getchar(); //åƒæ‰å›è½¦
         string first;
         switch (n)
         {
@@ -126,18 +126,18 @@ void User::Display()
             AddUser();
             lab = 0;
             break;
-        case 2:	//ÏÔÊ¾ĞÅÏ¢
+        case 2:	//æ˜¾ç¤ºä¿¡æ¯
             system("cls");
-            cout << "1.È«²¿Õ¹Ê¾   2.Õ¹Ê¾ĞÇ±êÁªÏµÈË   3.Õ¹Ê¾Í¬Ñ§   4.Õ¹Ê¾¼ÒÈË    5.Õ¹Ê¾Í¬ÊÂ   6.ºÚÃûµ¥" << endl;
+            cout << "1.å…¨éƒ¨å±•ç¤º   2.å±•ç¤ºæ˜Ÿæ ‡è”ç³»äºº   3.å±•ç¤ºåŒå­¦   4.å±•ç¤ºå®¶äºº    5.å±•ç¤ºåŒäº‹   6.é»‘åå•" << endl;
             int n;
             cin >> n;
             getchar();
             Choose_Show(n);
             lab = 0;
             break;
-        case 3:	//²éÕÒ 
+        case 3:	//æŸ¥æ‰¾ 
         {
-            cout << "ÊäÈë²éÕÒĞÅÏ¢£¨Ãû×Ö»òÕßµç»°£©" << endl;
+            cout << "è¾“å…¥æŸ¥æ‰¾ä¿¡æ¯ï¼ˆåå­—æˆ–è€…ç”µè¯ï¼‰" << endl;
 
             cin >> first;
             UserNode* T = SearchUser(first);
@@ -146,8 +146,8 @@ void User::Display()
             lab = 0;
             break;
         }
-        case 4:	 //É¾³ı
-            cout << "ÊäÈëÉ¾³ıµÄĞÅÏ¢£¨Ãû×Ö»òÕßµç»°£©" << endl;
+        case 4:	 //åˆ é™¤
+            cout << "è¾“å…¥åˆ é™¤çš„ä¿¡æ¯ï¼ˆåå­—æˆ–è€…ç”µè¯ï¼‰" << endl;
 
             cin >> first;
             getchar();
@@ -155,23 +155,23 @@ void User::Display()
             lab = 0;
 
             break;
-        case 5:	//  ĞŞ¸Ä
-            cout << "ÊäÈëĞŞ¸ÄµÄĞÅÏ¢£¨Ãû×Ö»òÕßµç»°£©" << endl;
+        case 5:	//  ä¿®æ”¹
+            cout << "è¾“å…¥ä¿®æ”¹çš„ä¿¡æ¯ï¼ˆåå­—æˆ–è€…ç”µè¯ï¼‰" << endl;
 
             cin >> first;
             getchar();
             ReviseUser(first);
             lab = 0;
             break;
-        case 6:	//  ±£´æ
+        case 6:	//  ä¿å­˜
             lab = 0;
             break;
-        case 7:	//  ¶ÁÈ¡
+        case 7:	//  è¯»å–
             lab = 0;
             break;
-        case 8://À­ºÚ
+        case 8://æ‹‰é»‘
         {
-            cout << "ÊäÈëĞŞ¸ÄµÄĞÅÏ¢£¨Ãû×Ö»òÕßµç»°£©" << endl;
+            cout << "è¾“å…¥ä¿®æ”¹çš„ä¿¡æ¯ï¼ˆåå­—æˆ–è€…ç”µè¯ï¼‰" << endl;
             cin >> first;
             getchar();
             UserNode* T = SearchUser(first);
@@ -181,9 +181,9 @@ void User::Display()
             lab = 0;
             break;
         }
-        case 9://·´À­ºÚ
+        case 9://åæ‹‰é»‘
         {
-            cout << "ÊäÈëĞŞ¸ÄµÄĞÅÏ¢£¨Ãû×Ö»òÕßµç»°£©" << endl;
+            cout << "è¾“å…¥ä¿®æ”¹çš„ä¿¡æ¯ï¼ˆåå­—æˆ–è€…ç”µè¯ï¼‰" << endl;
             cin >> first;
             getchar();
             UserNode* T = SearchUser(first);
@@ -194,7 +194,7 @@ void User::Display()
             break;
         }
         case 10:
-            cout << "ĞŞ¸ÄÃÜÂë:" << endl;
+            cout << "ä¿®æ”¹å¯†ç :" << endl;
 
             break;
         case 0:
@@ -202,12 +202,12 @@ void User::Display()
             lab = 0;
             break;
         default:
-            cout << "ÊäÈëÓĞÎó£¬ÖØĞÂÊäÈë" << endl;
+            cout << "è¾“å…¥æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥" << endl;
             lab++;
             break;
         }
         if (key != 0)
-            break;//°´0ÍË³ö
+            break;//æŒ‰0é€€å‡º
     }
 }
 
@@ -215,36 +215,36 @@ void User::Choose_Show(int first)
 {
     switch (first)
     {
-    case 1:         //È«²¿
+    case 1:         //å…¨éƒ¨
         Showdata();
         break;
-    case 2:         //ĞÇ±ê
+    case 2:         //æ˜Ÿæ ‡
         Show_star();
         break;
-    case 3:         //Í¬Ñ§
+    case 3:         //åŒå­¦
         Show_classmate();
         break;
-    case 4:         //¼ÒÈË
+    case 4:         //å®¶äºº
         Show_relative();
         break;
-    case 5:         //Í¬ÊÂ
+    case 5:         //åŒäº‹
         Show_colleague();
         break;
     case 6:
         Show_blacklist();
         break;
     default:
-        cout << "ÊäÈëÓĞÎó,ÈÎÒâ¼ü·µ»ØÖ÷²Ëµ¥" << endl;
+        cout << "è¾“å…¥æœ‰è¯¯,ä»»æ„é”®è¿”å›ä¸»èœå•" << endl;
         system("pause");
         break;
     }
 }
 
 
-void User::Showdata() //´òÓ¡¼òÂÔĞÅÏ¢£¨Ãû×Ö¡¢id¡¢µç»°£©
+void User::Showdata() //æ‰“å°ç®€ç•¥ä¿¡æ¯ï¼ˆåå­—ã€idã€ç”µè¯ï¼‰
     {
-         cout << "Ãû×Ö            id               µç»°    " << endl;
-        UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+         cout << "åå­—            id               ç”µè¯    " << endl;
+        UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
         while (temp != NULL)
         {
             if(false==temp->b_in_blacklist)
@@ -258,11 +258,11 @@ void User::Showdata() //´òÓ¡¼òÂÔĞÅÏ¢£¨Ãû×Ö¡¢id¡¢µç»°£©
 
 void User::Show_star()
 {
-    cout << "Ãû×Ö            id               µç»°    " << endl;
-    UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    cout << "åå­—            id               ç”µè¯    " << endl;
+    UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while (temp != NULL)
     {
-        if(true==temp->b_is_important&& false == temp->b_in_blacklist) //ÊÇĞÇ±ê¾Í´òÓ¡
+        if(true==temp->b_is_important&& false == temp->b_in_blacklist) //æ˜¯æ˜Ÿæ ‡å°±æ‰“å°
         cout << left << setw(16) << temp->str_name << setw(17) <<
             temp->str_id << setw(11) << temp->str_phone_num << endl;
         temp = temp->next;
@@ -274,11 +274,11 @@ void User::Show_star()
 
 void User::Show_relative()
 {
-    cout << "Ãû×Ö            id               µç»°    " << endl;
-    UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    cout << "åå­—            id               ç”µè¯    " << endl;
+    UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while (temp != NULL)
     {
-        if (true == temp->b_is_relative&& false == temp->b_in_blacklist) //ÊÇ¼ÒÈË¾Í´òÓ¡
+        if (true == temp->b_is_relative&& false == temp->b_in_blacklist) //æ˜¯å®¶äººå°±æ‰“å°
             cout << left << setw(16) << temp->str_name << setw(17) <<
             temp->str_id << setw(11) << temp->str_phone_num << endl;
         temp = temp->next;
@@ -288,11 +288,11 @@ void User::Show_relative()
 
 void User::Show_classmate()
 {
-    cout << "Ãû×Ö            id               µç»°    " << endl;
-    UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    cout << "åå­—            id               ç”µè¯    " << endl;
+    UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while (temp != NULL)
     {
-        if (true == temp->b_is_classmate&& false == temp->b_in_blacklist) //ÊÇÍ¬Ñ§¾Í´òÓ¡
+        if (true == temp->b_is_classmate&& false == temp->b_in_blacklist) //æ˜¯åŒå­¦å°±æ‰“å°
             cout << left << setw(16) << temp->str_name << setw(17) <<
             temp->str_id << setw(11) << temp->str_phone_num << endl;
         temp = temp->next;
@@ -302,11 +302,11 @@ void User::Show_classmate()
 
 void User::Show_colleague()
 {
-    cout << "Ãû×Ö            id               µç»°    " << endl;
-    UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    cout << "åå­—            id               ç”µè¯    " << endl;
+    UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while (temp != NULL)
     {
-        if (true == temp->b_is_colleague&& false == temp->b_in_blacklist) //ÊÇÍ¬ÊÂ¾Í´òÓ¡
+        if (true == temp->b_is_colleague&& false == temp->b_in_blacklist) //æ˜¯åŒäº‹å°±æ‰“å°
             cout << left << setw(16) << temp->str_name << setw(17) <<
             temp->str_id << setw(11) << temp->str_phone_num << endl;
         temp = temp->next;
@@ -316,11 +316,11 @@ void User::Show_colleague()
 
 void User::Show_blacklist()
 {
-    cout << "Ãû×Ö            id               µç»°    " << endl;
-    UserNode* temp = Head->next;//µÚ¶ş¸ö½Úµã¿ªÊ¼±éÀú
+    cout << "åå­—            id               ç”µè¯    " << endl;
+    UserNode* temp = Head->next;//ç¬¬äºŒä¸ªèŠ‚ç‚¹å¼€å§‹éå†
     while (temp != NULL)
     {
-        if (true == temp->b_in_blacklist) //ÊÇºÚÃûµ¥¾Í´òÓ¡
+        if (true == temp->b_in_blacklist) //æ˜¯é»‘åå•å°±æ‰“å°
             cout << left << setw(16) << temp->str_name << setw(17) <<
             temp->str_id << setw(11) << temp->str_phone_num << endl;
         temp = temp->next;
@@ -334,25 +334,25 @@ void User::Change_Pwd()
     string str2;
     while (1) {
         cin >> str1;
-        cout << "ÇëÈ·ÈÏÃÜÂë" << endl;
+        cout << "è¯·ç¡®è®¤å¯†ç " << endl;
         cin >> str2;
         if (str1 == str2) {
-            cout << "ĞŞ¸Ä³É¹¦" << endl;
+            cout << "ä¿®æ”¹æˆåŠŸ" << endl;
             str_pwd = str1;
             break;
         }
         else {
-            cout << "Á½´ÎÃÜÂë²»Ò»ÖÂ,ÖØĞÂÊäÈë" << endl;
+            cout << "ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´,é‡æ–°è¾“å…¥" << endl;
         }
     }
 
 }
 
 
-void User::ReviseUser(IN_PARAM string first) { //ĞŞ¸ÄÓÃ»§
+void User::ReviseUser(IN_PARAM string first) { //ä¿®æ”¹ç”¨æˆ·
     if (NULL == (Head->next))
     {
-        cout << "Í¨Ñ¶Â¼Îª¿Õ" << endl;
+        cout << "é€šè®¯å½•ä¸ºç©º" << endl;
         system("pause");
         return;
     }
@@ -363,7 +363,7 @@ void User::ReviseUser(IN_PARAM string first) { //ĞŞ¸ÄÓÃ»§
     }
     system("cls");
     temp->Show_detail();
-    cout << "¼üÈëÊı×Ö£¨°üº¬×éºÏ£©Ñ¡ÔñĞŞ¸ÄµÄÄ¿±ê£¨Ê×ÏÈÊäÈë0ÍË³ö£©" << endl;
+    cout << "é”®å…¥æ•°å­—ï¼ˆåŒ…å«ç»„åˆï¼‰é€‰æ‹©ä¿®æ”¹çš„ç›®æ ‡ï¼ˆé¦–å…ˆè¾“å…¥0é€€å‡ºï¼‰" << endl;
     string strInput;
     bool b_Flag = true;
     cout << "1:name  2:id  3:academic  4:major  5:province  6:address" << endl;
@@ -377,12 +377,12 @@ void User::ReviseUser(IN_PARAM string first) { //ĞŞ¸ÄÓÃ»§
         if ('0' == *p)return;
         for (char c : strInput)
         {
-            if (!(c <= '9' && c >= '1')&&c!='x')  //·ÀÖ¹ÓÃ»§ÂÒÊäÈë
+            if (!(c <= '9' && c >= '1')&&c!='x')  //é˜²æ­¢ç”¨æˆ·ä¹±è¾“å…¥
             {
                 b_Flag = false;
             }
         }
-        if (b_Flag == true)              //ÕıÈ·ÊäÈë
+        if (b_Flag == true)              //æ­£ç¡®è¾“å…¥
         {
             for (char c : strInput)
             {
@@ -415,17 +415,17 @@ void User::ReviseUser(IN_PARAM string first) { //ĞŞ¸ÄÓÃ»§
                     temp->Set_Group();
                 }
             }
-            cout << "ĞŞ¸Ä³É¹¦" << endl;
+            cout << "ä¿®æ”¹æˆåŠŸ" << endl;
             system("pause");
             return;
         }
-        else                        //ÖØÊä
+        else                        //é‡è¾“
         {
             b_Flag = true;
-            cout << "ÖØĞÂÊäÈë" << endl;
+            cout << "é‡æ–°è¾“å…¥" << endl;
         }
     }
-    /*ĞŞ¸ÄĞÅÏ¢*/
+    /*ä¿®æ”¹ä¿¡æ¯*/
 }
 
 
@@ -464,10 +464,10 @@ void UserNode::Set_Group()
     b_is_colleague = false;
     b_is_relative = false;
     b_is_classmate = false;
-    cout << "ÇëÊäÈëÒ»¸ö½öº¬1234µÄÕûÊıÀ´È·¶¨·Ö×é " << endl
-        << "Èô¸ÃÕûÊıº¬1£ºĞÇ±êÁªÏµÈË£¬  "
-        << "º¬2:Í¬Ñ§   " << "º¬3:¼ÒÈË  "
-        << "º¬4:Í¬ÊÂ      Ê×ÏÈÊäÈë0:Ìø¹ı"  << endl;
+    cout << "è¯·è¾“å…¥ä¸€ä¸ªä»…å«1234çš„æ•´æ•°æ¥ç¡®å®šåˆ†ç»„ " << endl
+        << "è‹¥è¯¥æ•´æ•°å«1ï¼šæ˜Ÿæ ‡è”ç³»äººï¼Œ  "
+        << "å«2:åŒå­¦   " << "å«3:å®¶äºº  "
+        << "å«4:åŒäº‹      é¦–å…ˆè¾“å…¥0:è·³è¿‡"  << endl;
     string strInput;
     bool b_Flag = true;
     while (1)
@@ -478,12 +478,12 @@ void UserNode::Set_Group()
        if ('0' == *p)return;
         for (char c : strInput)
         {
-            if (!(c <= '4' && c >= '1'))  //·ÀÖ¹ÓÃ»§ÂÒÊäÈë
+            if (!(c <= '4' && c >= '1'))  //é˜²æ­¢ç”¨æˆ·ä¹±è¾“å…¥
             {
                 b_Flag = false;
             }
         }
-        if (b_Flag == true)              //ÕıÈ·ÊäÈë
+        if (b_Flag == true)              //æ­£ç¡®è¾“å…¥
         {
             for (char c : strInput)
             {
@@ -500,21 +500,21 @@ void UserNode::Set_Group()
                 }
             }
 
-            cout << "²Ù×÷³É¹¦" << endl;
+            cout << "æ“ä½œæˆåŠŸ" << endl;
             system("pause");
             return;
         }
-        else                        //ÖØÊä
+        else                        //é‡è¾“
         {
             b_Flag = true;
-            cout << "ÖØĞÂÊäÈë" << endl;
+            cout << "é‡æ–°è¾“å…¥" << endl;
         }
     }
 }
 
 void UserNode::Set_major()
 {
-    cout << "ÊäÈë¸Ã³ÉÔ±µÄ×¨Òµ£º ";// input your province
+    cout << "è¾“å…¥è¯¥æˆå‘˜çš„ä¸“ä¸šï¼š ";// input your province
     string strMajorInput = "";
     bool b_Flag = true;
     while (1)  //using a loop to ensure that the user input the message correctly
@@ -536,22 +536,20 @@ void UserNode::Set_major()
         else               //input wrongly
         {
             b_Flag = true;
-            cout << "ÇëÖØĞÂÊäÈë×¨Òµ";
+            cout << "è¯·é‡æ–°è¾“å…¥ä¸“ä¸š";
         }
     }
 }
 
-extern const string sProvinces[34];
-/*
 const string sProvinces[34] = {"beijing", "tianjin", "shanghai", "chongqing", "hebei", "shanxi",
                   "neimenggu", "liaoning", "jilin", "heilongjiang", "jiangsu", "zhejiang",
                   "anhui", "fujian", "jiangxi", "shandong" , "henan", "hubei", "hunan", "guangdong"
                   "guangxi", "hainan", "sichuan", "guizhou", "yunnan", "xizang", "shaanxi", "gansu"
-                  "qinghai", "ningxia", "xinjiang", "xianggang", "aomen", "taiwan"};*/
-                  //Õâ¸ö¶«¶«·ÅÍ·ÎÄ¼ş
+                  "qinghai", "ningxia", "xinjiang", "xianggang", "aomen", "taiwan"};
+                 
 void UserNode::Set_province()
 {
-    cout << "ÊäÈë¸Ã³ÉÔ±Ê¡·İ£º ";// input your province
+    cout << "è¾“å…¥è¯¥æˆå‘˜çœä»½ï¼š ";// input your province
     string strInput;
     bool b_Flag = false;
     while (1)                  //using a loop to ensure that the user input the message correctly
@@ -578,7 +576,7 @@ void UserNode::Set_province()
         else               //input wrongly
         {
             b_Flag = false;
-            cout << "ÇëÖØĞÂÊäÈëÊ¡·İ£º";
+            cout << "è¯·é‡æ–°è¾“å…¥çœä»½ï¼š";
         }
     }
 
@@ -586,7 +584,7 @@ void UserNode::Set_province()
 
 void UserNode::Set_address()
 {
-    cout << "ÊäÈë¸Ã³ÉÔ±µÄÏÖµØÖ·£º ";// input your address
+    cout << "è¾“å…¥è¯¥æˆå‘˜çš„ç°åœ°å€ï¼š ";// input your address
     string strInput;
     bool b_Flag = true;
     while (1)                 //using a loop to ensure that the user input the message correctly
@@ -608,12 +606,12 @@ void UserNode::Set_address()
         else                     //input wrongly
         {
             b_Flag = false;
-            cout << "ÇëÖØĞÂÊäÈëµØÖ·£º ";
+            cout << "è¯·é‡æ–°è¾“å…¥åœ°å€ï¼š ";
         }
     }
 }
 void UserNode::Set_name() {
-    cout << "ÇëÊäÈëname£º"; //input your English name 
+    cout << "è¯·è¾“å…¥nameï¼š"; //input your English name 
     string sinput;
     bool b_ch = true;
     while (1) {        //to make sure the information is right
@@ -636,13 +634,13 @@ void UserNode::Set_name() {
         else              //input error
         {
             b_ch = true;
-            cout << "ÇëÖØĞÂÊäÈëname£º";
+            cout << "è¯·é‡æ–°è¾“å…¥nameï¼š";
         }
     }
 }
 
 void UserNode::Set_id() {
-    cout << "ÇëÊäÈëid(6Î»)£º";
+    cout << "è¯·è¾“å…¥id(6ä½)ï¼š";
     string sinput;
 
     bool b_ch = true;
@@ -666,14 +664,14 @@ void UserNode::Set_id() {
         else                //input error
         {
             b_ch = true;
-            cout << "ÇëÖØĞÂÊäÈëid£º";
+            cout << "è¯·é‡æ–°è¾“å…¥idï¼š";
         }
     }
 }
 
 void UserNode::Set_phone_num()
 {
-    cout << "ÇëÊäÈëµç»°ºÅÂë£º";
+    cout << "è¯·è¾“å…¥ç”µè¯å·ç ï¼š";
    
     string strInput;
     int i_num = 0;
@@ -702,7 +700,7 @@ void UserNode::Set_phone_num()
     {
         b_flag = true;
         i_num = 0;
-        cout << "ÖØĞÂÊäÈë"<<endl;
+        cout << "é‡æ–°è¾“å…¥"<<endl;
     }
   }
 }
@@ -710,7 +708,7 @@ void UserNode::Set_phone_num()
 
 void UserNode::Set_academic()
 {
-    cout << "ÇëÊäÈëacademic£º";
+    cout << "è¯·è¾“å…¥academicï¼š";
     string sinput;
     bool b_ch = true;
     while (1)
@@ -733,14 +731,14 @@ void UserNode::Set_academic()
         else
         {
             b_ch = true;
-            cout << "ÇëÖØĞÂÊäÈëacademic£º";
+            cout << "è¯·é‡æ–°è¾“å…¥academicï¼š";
         }
     }
 }
 
 void UserNode::Set_e_mail()
 {
-    cout << "ÇëÊäÈëe-mail£º";
+    cout << "è¯·è¾“å…¥e-mailï¼š";
     string sinput;
     bool b_ch = false;
     while (1)
@@ -749,7 +747,7 @@ void UserNode::Set_e_mail()
         getchar();
         for (char& c : sinput)
         {
-            if (c == '@')  //ÓĞ@¼´ÊÇÓÊ¼ş
+            if (c == '@')  //æœ‰@å³æ˜¯é‚®ä»¶
             {
                 b_ch = true;
                 break;
@@ -763,14 +761,14 @@ void UserNode::Set_e_mail()
         else
         {
             b_ch = false;
-            cout << "ÇëÖØĞÂÊäÈëe-mail£º";
+            cout << "è¯·é‡æ–°è¾“å…¥e-mailï¼š";
         }
     }
 }
 
 void UserNode::Set_company()
 {
-    cout << "ÇëÊäÈë¹«Ë¾";
+    cout << "è¯·è¾“å…¥å…¬å¸";
     string strInput;
     bool b_flag = true;
     while (1)
@@ -792,7 +790,7 @@ void UserNode::Set_company()
         else
         {
             b_flag = true;
-            cout << "ÖØĞÂÊäÈë" << endl;
+            cout << "é‡æ–°è¾“å…¥" << endl;
         }
     }
 }
@@ -817,19 +815,19 @@ void UserNode::Set_Black_List()
 {
     if (b_in_blacklist == true)
     {
-        cout << "¶ÔÏóÒÑÔÚºÚÃûµ¥ÄÚ" << endl;
+        cout << "å¯¹è±¡å·²åœ¨é»‘åå•å†…" << endl;
         system("pause");
         return;
     }
-    cout << "ÊÇ·ñ½«¸Ã¶ÔÏóÀ­½øºÚÃûµ¥?" << endl
-        << "°´yÀ­Èë" << endl;
+    cout << "æ˜¯å¦å°†è¯¥å¯¹è±¡æ‹‰è¿›é»‘åå•?" << endl
+        << "æŒ‰yæ‹‰å…¥" << endl;
     char chr[100];
     cin >> chr;
     getchar();
     if (chr[0] == 'y' || chr[0] == 'Y')
     {
         b_in_blacklist = true;
-        cout << "²Ù×÷³É¹¦" << endl;
+        cout << "æ“ä½œæˆåŠŸ" << endl;
         system("pause");
         return;
     }
@@ -839,19 +837,19 @@ void UserNode::Set_Black_List_Out()
 {
     if (b_in_blacklist == false)
     {
-        cout << "¶ÔÏóÎ´±»À­ºÚ" << endl;
+        cout << "å¯¹è±¡æœªè¢«æ‹‰é»‘" << endl;
         system("pause");
         return;
     }
-    cout << "ÊÇ·ñ½«¸Ã¶ÔÏóÒÆ³öºÚÃûµ¥?" << endl
-        << "°´yÒÆ³ö" << endl;
+    cout << "æ˜¯å¦å°†è¯¥å¯¹è±¡ç§»å‡ºé»‘åå•?" << endl
+        << "æŒ‰yç§»å‡º" << endl;
     char chr[100];
     cin >> chr;
     getchar();
     if (chr[0] == 'y' || chr[0] == 'Y')
     {
         b_in_blacklist = false;
-        cout << "²Ù×÷³É¹¦" << endl;
+        cout << "æ“ä½œæˆåŠŸ" << endl;
         system("pause");
         return;
     }
